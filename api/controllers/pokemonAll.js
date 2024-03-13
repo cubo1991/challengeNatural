@@ -3,10 +3,10 @@ const axios = require('axios');
 
 controller.index = async (req, res) => {
     try {
-        const page = req.query.page || 1;
-        const limit = req.query.limit || 21;
+        const page = req.params.index ;
+        const limit =  21;
         const offSet = (page - 1) * limit;
-
+         console.log(req.params)
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offSet}`);
         let results = response.data.results;
 
@@ -17,8 +17,17 @@ controller.index = async (req, res) => {
                 return {
                     id: response.data.id,
                     name: response.data.name,
-                    types: response.data.types,                   
-                    stats: response.data.stats,
+                    types: response.data.types.map((type) =>{
+                        return type.type.name;
+                    }
+                    ),                   
+                    stats: response.data.stats.map((stat)=>{
+                        return {
+                            name: stat.stat.name,
+                            value: stat.base_stat
+                        }
+                    
+                    }),
                     sprite: response.data.sprites.other.home.front_default
                 };
             } catch (error) {

@@ -1,23 +1,62 @@
 'use client'
-import React from 'react'
+import {useState} from 'react'
 import { useGetPokemonQuery } from '../api/apiSlice'
+import Link from 'next/link'
+import { PokemonCard } from '../pokemon/[id]/page'
 
 
 export const PokemonList = () => {
-const {data, isError, isLoading, error} = useGetPokemonQuery()
+  const [page, setPage] = useState(1)
+const {data: pokemon, isError: getPokemonIsError, isLoading: getPokemonLoading, error: getPokemonError} = useGetPokemonQuery(page)
 
 
-if(isLoading) return <div>Loading...</div>
-if(isError) return <div>{error.message} </div>
-console.log(data[0])
+console.log(pokemon)
+
+
+const changePag = (e) => {
+  if(e === '+' && page < 48){return setPage(page + 1)}
+  if (e === '-' && page >= 2){return setPage(page - 1)}
+}
+ 
+
+if(getPokemonLoading) return <div>Loading...</div>
+if(getPokemonIsError) return <div>{getPokemonError.message} </div>
+
   return (
     <div>
-<ul>
-    {data.map((pokemon) => {
-      return  <li>{pokemon.name}</li>
-    })}
-</ul>
-
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>HP</th>
+      <th>Attack</th>
+      <th>Defense</th>
+      <th>Special Attack</th>
+      <th>Special Defense</th>
+      <th>Speed</th>
+    </tr>
+  </thead>
+  <tbody>
+    {pokemon.map((pokemon) => (
+      <tr key={pokemon.id}>
+     <Link href={`/pokemon/${pokemon.id}`}>   <td>{pokemon.name}</td> </Link>
+        <td>{pokemon.types.join('/')}</td>
+        <td>{pokemon.stats.find(stat => stat.name === 'hp').value}</td>
+        <td>{pokemon.stats.find(stat => stat.name === 'attack').value}</td>
+        <td>{pokemon.stats.find(stat => stat.name === 'defense').value}</td>
+        <td>{pokemon.stats.find(stat => stat.name === 'special-attack').value}</td>
+        <td>{pokemon.stats.find(stat => stat.name === 'special-defense').value}</td>
+        <td>{pokemon.stats.find(stat => stat.name === 'speed').value}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+<div>
+<button onClick={() => changePag('-')}>Prev</button>
+{page}
+<button onClick={() => changePag('+')}>Next</button>
+</div>
     </div>
   )
 }

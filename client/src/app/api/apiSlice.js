@@ -9,12 +9,10 @@ export const apiSlice = createApi({
     }),
     endpoints: (builder) => ({
         getPokemon: builder.query({
-            query: () => `/pokemonall/`
-        }),
-        getPokemonByIndex: builder.query({
             query: (index) => `/pokemonall/${index}`
-        })
+        }),
+       
     })
 });
 
-export const { useGetPokemonQuery, useGetPokemonByIndexQuery } = apiSlice;
+export const { useGetPokemonQuery } = apiSlice;

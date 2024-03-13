@@ -3,6 +3,6 @@ const controller = require('../controllers/pokemonAll.js');
 
 const router = Router();
 
-router.get('/', controller.index)
+router.get('/:index', controller.index)
 
 module.exports = router;
