@@ -1,44 +1,39 @@
 const controller = {}
 const axios = require('axios');
 
-controller.index = (req, res) => {
+controller.index = async (req, res) => {
+    try {
+        const page = req.query.page || 1;
+        const limit = req.query.limit || 21;
+        const offSet = (page - 1) * limit;
 
-    const page = req.query.page || 1;
-    const limit = req.query.limit || 21;
-    const offSet = (page - 1) * limit;
+        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offSet}`);
+        let results = response.data.results;
 
-    axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offSet}`)
-    .then(response => {
-      let results = response.data.results;
-     
-      let promises = results.map(pokemon => {
-            return axios.get(pokemon.url)
-            .then(response => {
-                
-                console.log(pokemon.name)
-                               
+        let promises = results.map(async pokemon => {
+            try {
+                const response = await axios.get(pokemon.url);
+                console.log(pokemon.name);
                 return {
-                    name: pokemon.name,
-                    data: response.data
+                    id: response.data.id,
+                    name: response.data.name,
+                    types: response.data.types,
+                    height: response.data.height,
+                    weight: response.data.weight,
+                    ability: response.data.abilities,
+                    stats: response.data.stats,
+                    sprite: response.data.sprites.other.home.front_default
                 };
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error(error);
-            });
-      });
+            }
+        });
 
-      Promise.all(promises)
-      .then(pokemons => {
-         
-          res.send(pokemons);
-      })
-      .catch(error => {
-          console.error(error);
-      });
-    })
-    .catch(error => {
-      console.error(error);
-    });
+        let pokemons = await Promise.all(promises);
+        res.send(pokemons);
+    } catch (error) {
+        console.error(error);
+    }
 };
 
-module.exports = controller
+module.exports = controller;
