@@ -17,10 +17,7 @@ controller.index = async (req, res) => {
                 return {
                     id: response.data.id,
                     name: response.data.name,
-                    types: response.data.types,
-                    height: response.data.height,
-                    weight: response.data.weight,
-                    ability: response.data.abilities,
+                    types: response.data.types,                   
                     stats: response.data.stats,
                     sprite: response.data.sprites.other.home.front_default
                 };
