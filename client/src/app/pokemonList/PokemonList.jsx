@@ -2,7 +2,7 @@
 import {useState} from 'react'
 import { useGetPokemonQuery } from '../api/apiSlice'
 import Link from 'next/link'
-import { PokemonCard } from '../pokemon/[id]/page'
+
 
 
 export const PokemonList = () => {
@@ -10,7 +10,7 @@ export const PokemonList = () => {
 const {data: pokemon, isError: getPokemonIsError, isLoading: getPokemonLoading, error: getPokemonError} = useGetPokemonQuery(page)
 
 
-console.log(pokemon)
+
 
 
 const changePag = (e) => {

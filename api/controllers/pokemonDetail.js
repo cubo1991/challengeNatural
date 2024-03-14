@@ -3,11 +3,12 @@ const axios = require('axios');
 
 controller.index = async (req, res) => {
     let id = req.params.id
-    console.log(id)
+  
     try {
         let pokemon = []
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
-        let results = response.data;
+    
+
 
 
                 pokemon  = {
@@ -24,7 +25,12 @@ controller.index = async (req, res) => {
                         }
                     
                     }),
-                    sprite: response.data.sprites.other.home.front_default
+                    sprite: response.data.sprites.other.home.front_default,
+                    ability: response.data.abilities.map((ability)=>{
+                        return ability.ability.name;                   
+                    }),
+                    weight: response.data.weight,
+                    height: response.data.height,
                 };
       
   res.send(pokemon);
