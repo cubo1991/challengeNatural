@@ -1,23 +1,32 @@
 'use client'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useGetPokemonQuery } from '../api/apiSlice'
 import Link from 'next/link'
+
 
 export const PokemonList = () => {
   const [page, setPage] = useState(1)
   const { data: pokemon, isError: getPokemonIsError, isLoading: getPokemonLoading, error: getPokemonError } = useGetPokemonQuery(page)
 
+  const tableRef = useRef();
+  function scrollToTop() {
+    tableRef.current.scrollIntoView({ behavior: 'smooth' });
+  }
   const changePag = (e) => {
-    if(e === '+' && page < 48){return setPage(page + 1)}
-    if (e === '-' && page >= 2){return setPage(page - 1)}
+    if(e === '+' && page < 48){
+      scrollToTop()
+      return setPage(page + 1)}
+    if (e === '-' && page >= 2){
+      scrollToTop()
+      return setPage(page - 1)}
   }
 
   if(getPokemonLoading) return <div>Loading...</div>
   if(getPokemonIsError) return <div>{getPokemonError.message} </div>
 
   return (
-    <div className='h-screen flex justify-center items-center flex-col'>
-      <table className='table-auto w-4/5 mx-auto my-8 text-center'>
+    <div   className='h-screen flex justify-center items-center flex-col'>
+      <table ref={tableRef}  className='table-auto w-4/5 mx-auto my-8 text-center relative top-16'>
         <thead className='bg-gray-800 text-white'>
           <tr>
             <th className='p-2'>Name</th>
@@ -47,7 +56,7 @@ export const PokemonList = () => {
           ))}
         </tbody>
       </table>
-      <div className='flex justify-center items-center space-x-4'>
+      <div className='flex justify-center items-center space-x-4 relative top-14'>
         <button className='px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600' onClick={() => changePag('-')}>Prev</button>
         <span>{page}</span>
         <button className='px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600' onClick={() => changePag('+')}>Next</button>
