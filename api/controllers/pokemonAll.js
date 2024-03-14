@@ -4,7 +4,7 @@ const axios = require('axios');
 controller.index = async (req, res) => {
     try {
         const page = req.params.index ;
-        const limit =  21;
+        const limit =  18;
         const offSet = (page - 1) * limit;
          console.log(req.params)
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offSet}`);
