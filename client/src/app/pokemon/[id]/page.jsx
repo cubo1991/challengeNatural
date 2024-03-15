@@ -13,20 +13,23 @@ if(isError) return <div>{error.message} </div>
 
   return (
     <div>
-    <h2 style={{textTransform: 'capitalize'}} >{pokemon.name}</h2>
-    <img src={pokemon.sprite} alt={pokemon.name}></img>
-     <ul>     
-        <li style={{textTransform: 'capitalize'}}>Type: {pokemon.types.join('/')}</li>
-        <li>Hp: {pokemon.stats.find(stat => stat.name === 'hp').value}</li>
-        <li>Attack: {pokemon.stats.find(stat => stat.name === 'attack').value}</li>
-        <li>Defense: {pokemon.stats.find(stat => stat.name === 'defense').value}</li>
-        <li>Special Attack: {pokemon.stats.find(stat => stat.name === 'special-attack').value}</li>
-        <li>Special Defense: {pokemon.stats.find(stat => stat.name === 'special-defense').value}</li>
-        <li>Speed: {pokemon.stats.find(stat => stat.name === 'speed').value}</li>
-        <li style={{textTransform: 'capitalize'}}>Ability: {pokemon.ability.join(' and ')}</li>
-        <li>Height: {pokemon.height} lbs</li>
-        <li>Weight: {pokemon.weight} lbs</li>
-              </ul>
+    <h2 className='text-5xl text-center capitalize pb-3 font-bold text-blue-500' >{pokemon.name}</h2>
+   <div className='md:flex text-3xl pt-1 justify-evenly'>
+    <img className='relative bottom-16' src={pokemon.sprite} alt={pokemon.name}></img>
+    <ul className='pt-9 space-y-2 text-lg'>     
+    <li className='capitalize'>Type: <span className='font-bold'>{pokemon.types.join('/')}</span></li>
+    <li>Hp: <span className='font-bold'>{pokemon.stats.find(stat => stat.name === 'hp').value}</span></li>
+    <li>Attack: <span className='font-bold'>{pokemon.stats.find(stat => stat.name === 'attack').value}</span></li>
+    <li>Defense: <span className='font-bold'>{pokemon.stats.find(stat => stat.name === 'defense').value}</span></li>
+    <li>Special Attack: <span className='font-bold'>{pokemon.stats.find(stat => stat.name === 'special-attack').value}</span></li>
+    <li>Special Defense: <span className='font-bold'>{pokemon.stats.find(stat => stat.name === 'special-defense').value}</span></li>
+    <li>Speed: <span className='font-bold'>{pokemon.stats.find(stat => stat.name === 'speed').value}</span></li>
+    <li className='capitalize'>Ability: <span className='font-bold'>{pokemon.ability.join(' / ')}</span></li>
+    <li>Height: <span className='font-bold'>{pokemon.height}</span> lbs</li>
+    <li>Weight: <span className='font-bold'>{pokemon.weight}</span> lbs</li>
+</ul>
+
+    </div>
  
     </div>
   )

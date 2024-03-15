@@ -54,7 +54,8 @@ controller.index = async (req, res) => {
             } else {
             //Si no tiene el type, busca al pokemon en cuestión    
                 try {
-                    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${query.toLowerCase()}`)
+                    const qLowerCase = query.toLowerCase()
+                    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${qLowerCase}`)
                     pokemon = { id: response.data.id,
                         name: response.data.name,}
                     queryResult = pokemon
