@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 
 const SearchBar = () => {
    
-    const [searchTerm, setSearchTerm] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
 
     const router = useRouter()
     
@@ -15,6 +15,11 @@ const SearchBar = () => {
       setSearchTerm(event.target.value);
     };
 
+     const handleOnclick = () => {
+        router.push(`/searchResult?query=${searchTerm}`)
+        setSearchTerm('')
+
+     }   
 
     return (
         <div >
@@ -23,9 +28,10 @@ const SearchBar = () => {
                 placeholder="Search for type or name"
                 onChange={handleSearch}
                 className='rounded-md text-center'
+                value={searchTerm}
             />
             {/*Se pasa como query a la ruta del componente searchTerm, responsable de renderizar los resultados*/}
-            <button type="button" onClick={() => router.push(`/searchResult?query=${searchTerm}`)}>Search</button>
+            <button type="button" onClick={handleOnclick}>Search</button>
             </div>
     );
 };

@@ -19,7 +19,7 @@ controller.index = async (req, res) => {
         let allPokemons = [];
 
         //Busca si el valor de la query es un type
-        let encontrado = types.some(objeto => objeto.name === query);
+        let encontrado = types.some(objeto => objeto.name === query.toLowerCase());
         
         //Trae todo los pokemon para buscarlos por tipo
         let promises = results.map(async pokemon => {
@@ -40,6 +40,7 @@ controller.index = async (req, res) => {
         await Promise.all(promises).then(async() => {
             //Si el query es un type, filtra todo los pokemon que tengan ese type
             if (encontrado) {
+                let qLowerCase = query.toLowerCase()
                 let pokemonfiltered = allPokemons.filter((pokemon) => {
                     return pokemon.types.some((type) => {
                         return type.type.name === query.toLowerCase();
@@ -60,7 +61,8 @@ controller.index = async (req, res) => {
             } else {
             //Si no tiene el type, busca al pokemon en cuestión    
                 try {
-                    const qLowerCase = query.toLowerCase()
+                    let qLowerCase = query.toLowerCase()
+                   
                     const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${qLowerCase}`)
                     pokemon = { id: response.data.id,
                         name: response.data.name,}

@@ -1,4 +1,6 @@
 'use client'
+import ErrorMessage from '@/app/Components/ErrorMessage'
+import Loading from '@/app/Components/Loading'
 import { useGetPokemonDetailQuery } from '@/app/api/apiSlice'
 import React from 'react'
 
@@ -10,8 +12,8 @@ let id = params.id
 const {data: pokemon, isError, isLoading, error } = useGetPokemonDetailQuery(id)
 
 //Seteamos las situaciones de carga de datos y de error
-if(isLoading) return <div>Loading...</div>
-if(isError) return <div>{error.message} </div>
+if(isLoading) return <div><Loading/></div>
+if(isError) return <div>{<ErrorMessage error={error.data}/>} </div>
 
 
   return (

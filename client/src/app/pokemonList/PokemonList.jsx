@@ -2,11 +2,13 @@
 import { useRef, useState } from 'react'
 import { useGetPokemonQuery } from '../api/apiSlice'
 import Link from 'next/link'
+import Loading from '../Components/Loading'
+import ErrorMessage from '../Components/ErrorMessage'
 
 
 export const PokemonList = () => {
   const [page, setPage] = useState(1)
-  const { data: pokemon, isError: getPokemonIsError, isLoading: getPokemonLoading, error: getPokemonError } = useGetPokemonQuery(page)
+  const { data: pokemon, isError: getPokemonIsError, isLoading: getPokemonLoading, error } = useGetPokemonQuery(page)
 
   //Esta es la lógica para volver al principio de la tabla cuando cambiamos de página
   const tableRef = useRef();
@@ -25,8 +27,8 @@ export const PokemonList = () => {
   }
 
   //Seteamos las situaciones de carga de datos y de error
-  if(getPokemonLoading) return <div>Loading...</div>
-  if(getPokemonIsError) return <div>{getPokemonError.message} </div>
+  if(getPokemonLoading) return <div><Loading/></div>
+  if(getPokemonIsError) return <div>{<ErrorMessage error={error.data}/>} </div>
 
   return (
     <div   className='h-screen flex justify-center items-center flex-col'>

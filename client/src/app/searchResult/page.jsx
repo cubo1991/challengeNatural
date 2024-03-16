@@ -3,6 +3,9 @@ import { useSearchParams } from 'next/navigation'
 import React from 'react'
 import { useSearchPokemonQuery } from '../api/apiSlice'
 import Link from 'next/link'
+import Loading from '../Components/Loading'
+import ErrorMessage from '../Components/ErrorMessage'
+
 
 const SearchResult = () => {
 
@@ -12,15 +15,17 @@ let query = searchParams.get("query");
 
 const { data: pokemon, isError, isLoading, error } = useSearchPokemonQuery(query);
 
+
+
 //Seteamos las situaciones de carga de datos y de error
-if(isLoading) return <div>Loading...</div>
-if(isError) return <div>{error.message} </div>
+if(isLoading) return <Loading/>
+if(isError) return <div> {<ErrorMessage error={error.data}/>} </div>
 
 
 return (
  <div>
     <h2 className='pb-8 pt-3 font-bold text-3xl border text-center'> Pokemon search result </h2>
-
+  
 {
         pokemon.length >= 1
         ?
