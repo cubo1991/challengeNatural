@@ -1,28 +1,34 @@
 const express = require('express');
 const routes = require('./routes/index.js');
-const morgan = require('morgan');
 
+
+const morganMiddleware = require('./Middlewares/morgan.js');
+const ExpressJson = require('./Middlewares/ExpressJson.js');
+const router = require('./Middlewares/Router.js');
+const noPage = require('./Middlewares/defaultRoutes.js');
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsDoc = require('swagger-jsdoc');
+const swagger = require('./Middlewares/swagger.js');
+
+//settings
 const server = express();
-const PORT = process.env.PORT || 3001;
+const PORT =  3001;
 
 //middlewares
-server.use(morgan('dev'));
-server.use(express.json())
-
-//Routes
-server.use('/api', routes)
+morganMiddleware(server)
+ExpressJson(server, express)
+swagger('/api-doc', swaggerUi, swaggerJsDoc, server)
 
 
 
-server.get('/', (req, res) => {
-    res.send('Hello World');
-}
-);
+//Router
+router(server, '/api', routes)
 
-server.use((req,res) => { 
 
-    res.status(404).send('No existe la página');
-})
 
+//noPage route
+noPage(server)
+
+//server listening
 server.listen(PORT);
 console.log(`Server is running on port ${PORT}` );
