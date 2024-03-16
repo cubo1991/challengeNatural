@@ -1,5 +1,6 @@
 'use client'
-// ApiClientProvider.js
+
+//Provider para poder usar React Toolkit Query
 import { ApiProvider } from "@reduxjs/toolkit/query/react";
 import { apiSlice } from "./apiSlice";
 

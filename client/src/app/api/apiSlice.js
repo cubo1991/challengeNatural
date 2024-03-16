@@ -7,6 +7,8 @@ export const apiSlice = createApi({
     baseQuery:  fetchBaseQuery({
         baseUrl: 'http://localhost:3001/api'
     }),
+
+    //Conexión con el Back
     endpoints: (builder) => ({
         getPokemon: builder.query({
             query: (index) => `/pokemonall/${index}`

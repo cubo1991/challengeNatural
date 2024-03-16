@@ -8,10 +8,13 @@ export const PokemonList = () => {
   const [page, setPage] = useState(1)
   const { data: pokemon, isError: getPokemonIsError, isLoading: getPokemonLoading, error: getPokemonError } = useGetPokemonQuery(page)
 
+  //Esta es la lógica para volver al principio de la tabla cuando cambiamos de página
   const tableRef = useRef();
   function scrollToTop() {
     tableRef.current.scrollIntoView({ behavior: 'smooth' });
   }
+
+  //Función para cambiar de página, recibe un string '+' o '-' para aumentar o disminuir la página en 1.
   const changePag = (e) => {
     if(e === '+' && page < 48){
       scrollToTop()
@@ -21,6 +24,7 @@ export const PokemonList = () => {
       return setPage(page - 1)}
   }
 
+  //Seteamos las situaciones de carga de datos y de error
   if(getPokemonLoading) return <div>Loading...</div>
   if(getPokemonIsError) return <div>{getPokemonError.message} </div>
 

@@ -6,12 +6,13 @@ import Link from 'next/link'
 
 const SearchResult = () => {
 
-
+//Determinamos el valor de la query para mandar al back
 let searchParams = useSearchParams();
 let query = searchParams.get("query");
 
 const { data: pokemon, isError, isLoading, error } = useSearchPokemonQuery(query);
 
+//Seteamos las situaciones de carga de datos y de error
 if(isLoading) return <div>Loading...</div>
 if(isError) return <div>{error.message} </div>
 
