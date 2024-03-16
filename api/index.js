@@ -17,7 +17,7 @@ const PORT =  3001;
 //middlewares
 morganMiddleware(server)
 ExpressJson(server, express)
-swagger('/api-doc', swaggerUi, swaggerJsDoc, server)
+swagger('/apiDoc', swaggerUi, swaggerJsDoc, server)
 
 
 

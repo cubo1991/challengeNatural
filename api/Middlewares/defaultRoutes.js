@@ -1,4 +1,4 @@
-
+//Middleware que maneja rutas que no entran en la lógica principal del enroutado
 
 const noPage= (server) =>{
    

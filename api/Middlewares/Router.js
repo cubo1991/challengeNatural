@@ -1,3 +1,4 @@
+//Middleware del router
 const router= (server, url, dir) =>{
    
     return server.use(url, dir)

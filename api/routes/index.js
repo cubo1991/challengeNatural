@@ -1,12 +1,12 @@
 const express = require('express');
-const test = require('./test');
 const pokemonAll = require('./pokemonAll');
 const pokemonQuery = require('./pokemonQuery');
 const pokemonDetail = require('./pokemonDetail');
+
 // Crear una nueva instancia de Router
 const router = express.Router();
 
-router.use('/test', test);
+//Traemos todas las rutas que vamos a usar
 router.use('/pokemonAll', pokemonAll);
 router.use('/pokemonQuery', pokemonQuery)
 router.use('/pokemonDetail', pokemonDetail)

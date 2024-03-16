@@ -5,12 +5,11 @@ controller.index = async (req, res) => {
     let id = req.params.id
   
     try {
+        //Realizamos la peticion GET pasando como id el param que recibimos
         let pokemon = []
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
-    
 
-
-
+            //No traemos toda la data, filtramos solo que vamos a mandar al front
                 pokemon  = {
                     id: response.data.id,
                     name: response.data.name,
@@ -35,7 +34,9 @@ controller.index = async (req, res) => {
       
   res.send(pokemon);
     } catch (error) {
-        console.error(error);
+        //En caso de ingresar un id erroneo, envía el error y el correspondiente mensaje
+        res.status(404).send(`There is no Pokemon with the ID ${id}. Please enter a valid Pokemon ID.`
+        );
     }
 };
 

@@ -1,0 +1,218 @@
+
+{
+  "/api/pokemonQuery": {
+    "get": {
+      "summary": "Obtiene un pokemon o una lista de pokemon buscando por el resultado recibido de na query",
+      "parameters": [
+        {
+          "in": "query",
+          "name": "query",
+          "schema": {
+            "type": "string"
+          },
+          "required": true,
+          "description": "Palabra clave a buscar"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Resultado de búsqueda que arroja todos los pokemon que matchean con la búsqueda pero solo devuelve sus nombre y sus ID.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              },
+              "example": [
+                [
+                  {
+                    "id": 77,
+                    "name": "ponyta"
+                  },
+                  {
+                    "id": 59,
+                    "name": "arcanine"
+                  },
+                  {
+                    "id": 78,
+                    "name": "rapidash"
+                  },
+                  {
+                    "id": 5,
+                    "name": "charmeleon"
+                  },
+                  {
+                    "id": 58,
+                    "name": "growlithe"
+                  },
+                  {
+                    "id": 37,
+                    "name": "vulpix"
+                  },
+                  {
+                    "id": 6,
+                    "name": "charizard"
+                  },
+                  {
+                    "id": 909,
+                    "name": "fuecoco"
+                  },
+                  {
+                    "id": 910,
+                    "name": "crocalor"
+                  },
+                  {
+                    "id": 725,
+                    "name": "litten"
+                  },
+                  {
+                    "id": 514,
+                    "name": "simisear"
+                  },
+                  {
+                    "id": 911,
+                    "name": "skeledirge"
+                  },
+                  {
+                    "id": 554,
+                    "name": "darumaka"
+                  },
+                  {
+                    "id": 498,
+                    "name": "tepig"
+                  },
+                  {
+                    "id": 727,
+                    "name": "incineroar"
+                  },
+                  {
+                    "id": 721,
+                    "name": "volcanion"
+                  },
+                  {
+                    "id": 500,
+                    "name": "emboar"
+                  },
+                  {
+                    "id": 513,
+                    "name": "pansear"
+                  },
+                  {
+                    "id": 608,
+                    "name": "lampent"
+                  },
+                  {
+                    "id": 607,
+                    "name": "litwick"
+                  },
+                  {
+                    "id": 662,
+                    "name": "fletchinder"
+                  },
+                  {
+                    "id": 229,
+                    "name": "houndoom"
+                  },
+                  {
+                    "id": 218,
+                    "name": "slugma"
+                  },
+                  {
+                    "id": 255,
+                    "name": "torchic"
+                  },
+                  {
+                    "id": 256,
+                    "name": "combusken"
+                  },
+                  {
+                    "id": 219,
+                    "name": "magcargo"
+                  },
+                  {
+                    "id": 244,
+                    "name": "entei"
+                  },
+                  {
+                    "id": 240,
+                    "name": "magby"
+                  },
+                  {
+                    "id": 155,
+                    "name": "cyndaquil"
+                  },
+                  {
+                    "id": 228,
+                    "name": "houndour"
+                  },
+                  {
+                    "id": 126,
+                    "name": "magmar"
+                  },
+                  {
+                    "id": 157,
+                    "name": "typhlosion"
+                  },
+                  {
+                    "id": 250,
+                    "name": "ho-oh"
+                  },
+                  {
+                    "id": 257,
+                    "name": "blaziken"
+                  },
+                  {
+                    "id": 851,
+                    "name": "centiskorch"
+                  },
+                  {
+                    "id": 850,
+                    "name": "sizzlipede"
+                  },
+                  {
+                    "id": 741,
+                    "name": "oricorio-baile"
+                  },
+                  {
+                    "id": 814,
+                    "name": "raboot"
+                  },
+                  {
+                    "id": 813,
+                    "name": "scorbunny"
+                  },
+                  {
+                    "id": 4,
+                    "name": "charmander"
+                  },
+                  {
+                    "id": 726,
+                    "name": "torracat"
+                  },
+                  {
+                    "id": 815,
+                    "name": "cinderace"
+                  },
+                  {
+                    "id": 806,
+                    "name": "blacephalon"
+                  },
+                  {
+                    "id": 668,
+                    "name": "pyroar"
+                  },
+                  {
+                    "id": 667,
+                    "name": "litleo"
+                  }
+                ]
+              ]
+            }
+          }
+        },
+        "404": {
+          "description": "Pokemon no encontrado."
+        }
+      }
+    }
+  }
+}

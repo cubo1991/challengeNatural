@@ -1,0 +1,50 @@
+
+{
+  "/api/pokemondetail/{id}": {
+    "get": {
+      "summary": "Obtiene un pokemon buscado por su id",
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "schema": {
+            "type": "integer"
+          },
+          "required": true,
+          "description": "ID del pokemon"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Resultado de búsqueda.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              },
+              "example": [
+                {
+                  "id": 1,
+                  "name": "bulbasaur",
+                  "types": ["grass", "poison"],
+                  "stats": [
+                    {"name": "hp", "value": 45},
+                    {"name": "attack", "value": 49},
+                    {"name": "defense", "value": 49},
+                    {"name": "special-attack", "value": 65},
+                    {"name": "special-defense", "value": 65},
+                    {"name": "speed", "value": 45}
+                  ],
+                  "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/1.png"
+                }
+              ]
+            }
+          }
+        },
+        "404": {
+          "description": "Pokemon no encontrado."
+        }
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-
+//Middleware que nos permite poder visualizar el formato json de las respuestas
 
 
 

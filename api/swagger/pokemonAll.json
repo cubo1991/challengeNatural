@@ -8,7 +8,7 @@
           "in": "path",
           "name": "index",
           "schema": {
-            "type": "integer"
+            "type": "integer" 
           },
           "required": true,
           "description": "Indice de la página de pokemon."
@@ -16,7 +16,7 @@
       ],
       "responses": {
         "200": {
-          "description": "Lista de pokemon.",
+          "description": "Lista de 18 pokemon.",
           "content": {
             "application/json": {
               "schema": {
