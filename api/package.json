@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node --watch index.js",
     "start": "node index.js",
-    "test": "npx jest"
+    "test": "npx jest",
+    "start-docker-server": "docker run --rm -d -p 3001:3001/tcp pokedex-server:latest"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +18,9 @@
     "morgan": "^1.10.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.4"
   }
 }

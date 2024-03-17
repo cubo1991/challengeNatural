@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+  cd ..  "start-docker-client": "docker run --rm -d -p 3000:3000/tcp pokedex-front:latest"
   },
   "dependencies": {
     "@nextui-org/spinner": "^2.0.25",
@@ -18,7 +19,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-redux": "^9.1.0",
-    "spinner": "^0.3.4"
+    "spinner": "^0.2.4"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

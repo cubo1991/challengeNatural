@@ -18,7 +18,14 @@ describe('GET /pokemonQuery', () => {
         expect(response.body).toBeInstanceOf(Array);
       
   })
-  test('when searching by name, should respond with an array of objects', async () => {
+  
+  test('when searching by type that exist but no pokemon have it, should respond with a message', async () => {
+    const response = await request(server).get('/api/pokemonquery?query=unknown').send();   
+    expect(response.status).toBe(404)   
+    expect(response.error.text).toBe('No Pokemon of unknown type was found')
+})
+
+  test('when searching by name, should respond with an object', async () => {
     const response = await request(server).get('/api/pokemonquery?query=pikachu').send();   
     expect(response.body).toBeInstanceOf(Object);
     expect(response.body).toHaveProperty('id');
