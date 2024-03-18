@@ -9,6 +9,7 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@nextui-org/theme/dist/components/spinner.js",
     "./node_modules/@nextui-org/theme/dist/components/dropdown.js",
+    "./node_modules/@nextui-org/theme/dist/components/button.js",
   ],
   theme: {
     extend: {

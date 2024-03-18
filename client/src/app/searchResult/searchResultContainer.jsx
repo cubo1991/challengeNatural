@@ -1,12 +1,15 @@
+'use client'
 import { Suspense } from 'react';
 import Loading from '../../Components/Loading';
+
 import SearchResult from './page';
 
-const SearchResult = () => {
+const SearchResultContainer = () => {
   return (
- 
-    <SearchResult />
+ <Suspense fallback={<Loading/>}>
+    <SearchResult  />
+    </Suspense>
   )
 }
 
-export default SearchResult
+export default SearchResultContainer

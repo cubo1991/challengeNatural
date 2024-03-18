@@ -9,7 +9,7 @@ describe('GET /pokemonQuery', () => {
         expect(response.status).toBe(200);     
     });
     test('should respond with a 200 status code for the search by name', async () => {
-        const response = await request(server).get('/api/pokemonquery?query=pikachu').expect(200);
+        const response = await request(server).get('/api/pokemonquery?query=bulbasaur').expect(200);
         expect(response.status).toBe(200);     
     });
 

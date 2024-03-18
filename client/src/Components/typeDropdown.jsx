@@ -1,8 +1,10 @@
 'use client'
 import { ThemeContext } from "@/context/ThemeContext";
+import { Button } from "@nextui-org/button";
 
 import {  Dropdown,  DropdownTrigger,  DropdownMenu,  DropdownSection,  DropdownItem} from "@nextui-org/dropdown";
 import { useState, useEffect, useContext } from "react";
+
 
 export const TypeDropdown = () => {
     const theme = useContext(ThemeContext)
@@ -16,10 +18,10 @@ export const TypeDropdown = () => {
     return (
       <Dropdown>
         <DropdownTrigger>
-          <button  className="text-white text-xl text-center"   
+          <Button  className="text-white text-xl text-center"   
           >
             Color Theme
-          </button>
+          </Button>
         </DropdownTrigger>
         <DropdownMenu style={{ maxHeight: "200px", overflowY: "auto", position: 'relative', top: '0.8rem', background:'rgba(1,1,1,0.5)', color: "white" }} aria-label="Static Actions">
           <DropdownItem color='danger' onAction={() => setSelectedItem("fire")} key='fire'>Fire</DropdownItem>  

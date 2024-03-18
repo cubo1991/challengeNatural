@@ -1,17 +1,22 @@
 'use client'
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
 import React from 'react';
 import { useSearchPokemonQuery } from '../api/apiSlice';
 import Link from 'next/link';
-import Loading from '../../Components/Loading';
-import ErrorMessage from '../../Components/ErrorMessage';
+import Loading from '@/Components/Loading';
+import ErrorMessage from '@/Components/ErrorMessage';
+
+
 
 const SearchResult = () => {
 
   let searchParams = useSearchParams();
-  let query = searchParams.get("query");
+  let q = searchParams.get("query");
+  const [query, setQuery] = useState(q);
    const { data: pokemon, isError, isLoading, error } = useSearchPokemonQuery(query); 
+
+
 
  
 
@@ -26,7 +31,7 @@ const SearchResult = () => {
         ?
         <ul  className="space-y-2">
         {Object.keys(pokemon).map((key) => {
-          return  <Link href={`/pokemon/${pokemon[key].id}`}><li className="p-4 border rounded shadow text-center capitalize" key={pokemon[key].id}>{pokemon[key].name}</li></Link>
+          return  <Link key={pokemon[key].id} href={`/pokemon/${pokemon[key].id}`}><li  className="p-4 border rounded shadow text-center capitalize" key={pokemon[key].id}>{pokemon[key].name}</li></Link>
         })}
         </ul>
         :
