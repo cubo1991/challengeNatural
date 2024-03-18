@@ -3,13 +3,13 @@ const routes = require('./routes/index.js');
 
 
 const morganMiddleware = require('./Middlewares/morgan.js');
-const ExpressJson = require('./Middlewares/ExpressJson.js');
+
 const router = require('./Middlewares/Router.js');
 const noPage = require('./Middlewares/defaultRoutes.js');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
-const swagger = require('./Middlewares/swagger.js');
-
+ const swagger = require('./Middlewares/swagger.js');
+const ExpressJson = require('./expressJson.js')
 //settings
 const server = express();
 
