@@ -4,10 +4,9 @@ import SearchResult from './page';
 
 const SearchResult = () => {
   return (
-    <Suspense fallback={<Loading/>}>
+ 
     <SearchResult />
-    </Suspense>
-  );
+  )
 }
 
 export default SearchResult

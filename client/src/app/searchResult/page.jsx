@@ -8,14 +8,12 @@ import Loading from '../Components/Loading';
 import ErrorMessage from '../Components/ErrorMessage';
 
 const SearchResult = () => {
-  const [query, setQuery] = useState(null);
 
-  useEffect(() => {
-    let searchParams = useSearchParams();
-    setQuery(searchParams.get("query"));
-  }, []);
+  let searchParams = useSearchParams();
+  let query = searchParams.get("query");
+   const { data: pokemon, isError, isLoading, error } = useSearchPokemonQuery(query); 
 
-  const { data: pokemon, isError, isLoading, error } = useSearchPokemonQuery(query);
+ 
 
   if(isLoading) return <Loading/>
   if(isError) return <div> {<ErrorMessage error={error.data}/>} </div>

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-  cd ..  "start-docker-client": "docker run --rm -d -p 3000:3000/tcp pokedex-front:latest"
+  "start-docker-client": "docker run --rm -d -p 3000:3000/tcp pokedex-front:latest"
   },
   "dependencies": {
     "@nextui-org/spinner": "^2.0.25",
