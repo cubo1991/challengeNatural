@@ -4,8 +4,8 @@ import { useSearchParams } from 'next/navigation';
 import React from 'react';
 import { useSearchPokemonQuery } from '../api/apiSlice';
 import Link from 'next/link';
-import Loading from '../Components/Loading';
-import ErrorMessage from '../Components/ErrorMessage';
+import Loading from '../../Components/Loading';
+import ErrorMessage from '../../Components/ErrorMessage';
 
 const SearchResult = () => {
 

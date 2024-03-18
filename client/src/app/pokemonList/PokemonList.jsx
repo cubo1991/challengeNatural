@@ -1,14 +1,29 @@
 'use client'
-import { useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { useGetPokemonQuery } from '../api/apiSlice'
 import Link from 'next/link'
-import Loading from '../Components/Loading'
-import ErrorMessage from '../Components/ErrorMessage'
+import Loading from '../../Components/Loading'
+import ErrorMessage from '../../Components/ErrorMessage'
+import { ThemeContext } from '@/context/ThemeContext'
+import { colorTheme } from '@/Components/colorTheme'
 
 
 export const PokemonList = () => {
+
+  const theme = useContext(ThemeContext);
+  const [colorContext, setColorContext] = useState(theme.color);
+  const [color, setColor] = useState(colorContext);
   const [page, setPage] = useState(1)
   const { data: pokemon, isError: getPokemonIsError, isLoading: getPokemonLoading, error } = useGetPokemonQuery(page)
+
+  useEffect(() => {
+    setColor(theme.color);
+  }, [colorContext, theme.color]);
+  
+
+  let colors = colorTheme(color);
+
+
 
   //Esta es la lógica para volver al principio de la tabla cuando cambiamos de página
   const tableRef = useRef();
@@ -30,10 +45,12 @@ export const PokemonList = () => {
   if(getPokemonLoading) return <div><Loading/></div>
   if(getPokemonIsError) return <div>{<ErrorMessage error={error.data}/>} </div>
 
+  console.log(colors)
+
   return (
     <div   className='h-screen flex justify-center items-center flex-col'>
       <table ref={tableRef}  className='table-auto w-4/5 mx-auto my-8 text-center relative top-16'>
-        <thead className='bg-gray-800 text-white'>
+        <thead className={`${colors.bg} text-white`}>
           <tr>
             <th className='p-2'>Name</th>
             <th className='p-2'>Type</th>
@@ -48,9 +65,9 @@ export const PokemonList = () => {
         <tbody>
           {pokemon.map((pokemon) => (
             <tr key={pokemon.id} className='border-b border-gray-200'>
-              <Link href={`/pokemon/${pokemon.id}`}>
-                <td className='p-2 text-left text-blue-500 hover:underline' style={{textTransform: 'capitalize'}}>{pokemon.name}</td>
-              </Link>
+
+                <td className='p-2 text-left text-blue-500 hover:underline' style={{textTransform: 'capitalize'}}>            <Link href={`/pokemon/${pokemon.id}`}>{pokemon.name}   </Link></td>
+          
               <td className='p-2' style={{textTransform: 'capitalize'}}>{pokemon.types.join('/')}</td>
               <td className='p-2'>{pokemon.stats.find(stat => stat.name === 'hp').value}</td>
               <td className='p-2'>{pokemon.stats.find(stat => stat.name === 'attack').value}</td>

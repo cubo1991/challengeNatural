@@ -4,14 +4,22 @@
 import { ApiProvider } from "@reduxjs/toolkit/query/react";
 import { apiSlice } from "./apiSlice";
 import {NextUIProvider} from "@nextui-org/system";
+import { ThemeProvider } from "@/context/ThemeContext";
+import { NavBar } from "@/Components/NavBar";
+
 
 
 export function ApiClientProvider({ children }) {
   return (
     <ApiProvider api={apiSlice}>
-        <NextUIProvider>      
+        <ThemeProvider>
+        <NextUIProvider>
+        <NavBar/>      
       {children}
-      </NextUIProvider>
+     
+     
+   </NextUIProvider>   
+   </ThemeProvider>   
     </ApiProvider>
   );
 }

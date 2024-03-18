@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { useContext, useState, useEffect } from 'react'
+import { colorTheme } from "./colorTheme";
+import { ThemeContext } from "@/context/ThemeContext";
 
 const PokemonCard = ({name, sprite, types, stats, ability, height, weight}) => {
+  const theme = useContext(ThemeContext);
+  const [colorContext, setColorContext] = useState(theme.color);
+  const [color, setColor] = useState(colorContext);
+  
+  useEffect(() => {
+    setColor(theme.color);
+  }, [colorContext, theme.color]);
+  
+
+  let colors = colorTheme(color);
   return (
     <div>
-    <h2 className='text-5xl text-center capitalize pb-3 font-bold text-blue-500' >{name}</h2>
+    <h2 className= {`text-5xl text-center capitalize pb-3 font-bold ${colors.text}`} >{name}</h2>
    <div className='md:flex text-3xl pt-1 justify-evenly'>
     <img className='relative bottom-16' src={sprite} alt={name}></img>
     <ul className='pt-9 space-y-2 text-lg'>     

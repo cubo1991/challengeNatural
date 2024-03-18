@@ -1,9 +1,9 @@
 'use client'
 import React from 'react'
-import ErrorMessage from '@/app/Components/ErrorMessage'
-import Loading from '@/app/Components/Loading'
+import ErrorMessage from '@/Components/ErrorMessage'
+import Loading from '@/Components/Loading'
 import { useGetPokemonDetailQuery } from '@/app/api/apiSlice'
-import PokemonCard from '@/app/Components/PokemonCard'
+import PokemonCard from '@/Components/PokemonCard'
 
 
 
