@@ -34,7 +34,15 @@ Opcionalmente, puede abrir una consola de comandos en el directorio base del rep
 
 
 ## Ejecución
-1- Ya instalado, tiene que volver a la carpeta del backend (recuerde, desde el directorio base debe introducir el comando **cd api** 
+1- Ya instalado, tiene que volver a la carpeta del backend (recuerde, desde el directorio base debe introducir el comando **cd api**.
+
+2- Ahí introduzca el comando **npm start** y el servidor estará funcionando.
+
+3- Abra una nueva consola sin cerrar la anterior y navegue hasta el directorio client.
+
+4- Ahí introduzca el comando **npm run build** 
+
+5- Al finalizar, introduzca el comando **npm start** e ingrese a http://localhost:3000. Ya podrá hacer uso de la appweb
 
 Contacto
 Proporciona información de contacto para que otros desarrolladores puedan comunicarse contigo en caso de tener preguntas o comentarios sobre el proyecto.
