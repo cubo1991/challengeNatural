@@ -1,6 +1,6 @@
 # Api de Pokedex para el Challenge de Natural Tech House
 
-Pequeña aplicación que consume datos de [PokeApi](https://pokeapi.co/) con un backend construido con Express que actúa como un BFF e interactúa con un frontend realizado con el framework de Javascript, Next.JS
+Aplicación que consume datos de [PokeApi](https://pokeapi.co/) con un backend construido con Express que actúa como un BFF e interactúa con un frontend realizado con el framework de Javascript, Next.JS
 
 ## Tabla de Contenidos
 
