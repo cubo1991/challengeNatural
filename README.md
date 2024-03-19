@@ -36,19 +36,66 @@ Opcionalmente, puede abrir una consola de comandos en el directorio base del rep
 ## Ejecución
 1- Ya instalado, tiene que volver a la carpeta del backend (recuerde, desde el directorio base debe introducir el comando **cd api**).
 
-2- Ahí introduzca el comando **npm start** y el servidor estará funcionando.
+2- Ahí introduzca el comando **npm start** y el servidor estará funcionando. Puede probar ingresando a http://localhost:3001/apiDoc/, y además vera los endpoints implementados en el proyecto usando Swagger.
+
+![image](https://github.com/cubo1991/challengeNatural/assets/51756722/ae8edb93-2583-4d57-b414-b9ddde9f94e8)
+
+![image](https://github.com/cubo1991/challengeNatural/assets/51756722/ba50edc0-55e7-4105-93aa-1e2d59f64078)
+
+
 
 3- Abra una nueva consola sin cerrar la anterior y navegue hasta el directorio client.
 
 4- Ahí introduzca el comando **npm run build** 
 
-5- Al finalizar, introduzca el comando **npm start** e ingrese a http://localhost:3000. Ya podrá hacer uso de la appweb
+![image](https://github.com/cubo1991/challengeNatural/assets/51756722/b1346388-18c2-4d2b-8b45-efffb2d054e1)
 
-### Con Docker
 
-1-  Tiene que volver a la carpeta del backend (recuerde, desde el directorio base debe introducir el comando **cd api**).
+5- Al finalizar, introduzca el comando **npm start** e ingrese a http://localhost:3000. Ya podrá hacer uso de la appweb.
+
+![image](https://github.com/cubo1991/challengeNatural/assets/51756722/d5dd666e-c75a-4d49-9c57-336e249caad7)
+
+![image](https://github.com/cubo1991/challengeNatural/assets/51756722/7d124fc9-b267-4eaa-b7a0-c57d685a083d)
+
+
+
+
+### Con Docker 
+
+Antes que nada, asegurese de tenerlo instalado y funcionando en su equipo.
+
+1- Tiene que volver a la carpeta del backend (recuerde, desde el directorio base debe introducir el comando **cd api**).
 2- Ingrese el comando **docker build . -t pokedex-server:latest**
-3- Ingrese el comando **npm run start-docker-server** y listo, el server de la aplicación estará corriendo en el puerto 3001
+
+![image](https://github.com/cubo1991/challengeNatural/assets/51756722/1070f75b-0824-4368-b370-c91b142f40dc)
+
+3- Ingrese el comando **npm run start-docker-server** y listo, el server de la aplicación estará corriendo en el puerto 3001. También puede probar con http://localhost:3001/apiDoc/
+
+![image](https://github.com/cubo1991/challengeNatural/assets/51756722/346c6d93-34b9-45cf-b09f-f0eb7627bf73)
+
+4- Vuelva a la carptea del frontend
+
+5- Ingrese el comando **docker build . -t pokedex-front:latest**
+
+![image](https://github.com/cubo1991/challengeNatural/assets/51756722/98e0d3a3-92f0-4e4b-95cc-1ccd8183ed90)
+
+
+6- Ingrese el comando **npm run start-docker-client** y va a tener funcionando tanto el lado del cliente como el del server.
+
+![image](https://github.com/cubo1991/challengeNatural/assets/51756722/ad5af5f7-3b80-43a4-84a4-4fc819292cfe)
+
+
+## Testeo
+
+La aplicación contiene test unitarios.
+
+Para ejecutarlos, ejecute **npm test** desde el directorio del server (api)
+
+![image](https://github.com/cubo1991/challengeNatural/assets/51756722/8eaf1b48-5036-4752-8667-3d8740ad7dd2)
+
+
+
+
 
 Contacto
 Proporciona información de contacto para que otros desarrolladores puedan comunicarse contigo en caso de tener preguntas o comentarios sobre el proyecto.
