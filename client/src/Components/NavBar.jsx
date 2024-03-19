@@ -10,6 +10,9 @@ export const NavBar = () => {
  
   
   const theme = useContext(ThemeContext);
+
+  
+  //Lógca para los colores por tipo
   const [colorContext, setColorContext] = useState(theme.color);
   const [color, setColor] = useState(colorContext);
   

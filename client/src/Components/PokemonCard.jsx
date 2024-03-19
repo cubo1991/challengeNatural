@@ -3,6 +3,9 @@ import { colorTheme } from "./colorTheme";
 import { ThemeContext } from "@/context/ThemeContext";
 
 const PokemonCard = ({name, sprite, types, stats, ability, height, weight}) => {
+
+  
+  //Lógca para los colores por tipo
   const theme = useContext(ThemeContext);
   const [colorContext, setColorContext] = useState(theme.color);
   const [color, setColor] = useState(colorContext);

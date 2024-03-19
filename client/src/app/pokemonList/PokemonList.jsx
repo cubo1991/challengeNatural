@@ -10,9 +10,11 @@ import { colorTheme } from '@/Components/colorTheme'
 
 export const PokemonList = () => {
 
+  //Lógca para los colores por tipo
   const theme = useContext(ThemeContext);
   const [colorContext, setColorContext] = useState(theme.color);
   const [color, setColor] = useState(colorContext);
+
   const [page, setPage] = useState(1)
   const { data: pokemon, isError: getPokemonIsError, isLoading: getPokemonLoading, error } = useGetPokemonQuery(page)
 

@@ -2,7 +2,7 @@
 {
   "/api/pokemonQuery": {
     "get": {
-      "summary": "Obtiene un pokemon o una lista de pokemon buscando por el resultado recibido de na query",
+      "summary": "Obtiene un pokemon o una lista de pokemon buscando por el resultado recibido de una query",
       "parameters": [
         {
           "in": "query",
