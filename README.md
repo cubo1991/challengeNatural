@@ -6,6 +6,7 @@ Pequeña aplicación que consume datos de [PokeApi](https://pokeapi.co/) con un 
 
 1. [Instalación](#instalación)
 2. [Ejecución](#ejecución)
+3. [Testeo](#testeo)
 
 
 ## Instalación
@@ -98,8 +99,8 @@ Para ejecutarlos, ejecute **npm test** desde el directorio del server (api)
 
 
 Contacto
-Proporciona información de contacto para que otros desarrolladores puedan comunicarse contigo en caso de tener preguntas o comentarios sobre el proyecto.
 
-Nombre: [Tu nombre]
-Correo electrónico: [Tu correo electrónico]
-GitHub: [Tu perfil de GitHub]
+
+Nombre: David Lopez
+Correo electrónico: adavidlopezmathez@gmail.com
+GitHub: github.com/cubo1991
